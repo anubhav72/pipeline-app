@@ -40,17 +40,18 @@ jobs:
       - name: Run ESLint
         run: npm run lint
 
-      # 6. Build project (Vite outputs to dist/)
+      # 6. Build project
       - name: Build project
         run: npm run build
 
-      # 7. Upload build folder (optional)
-      - name: Upload build artifact
+      # 7. Upload build artifact (optional)
+      - name: Upload build folder
         uses: actions/upload-artifact@v3
         with:
-          name: dist
+          name: build
           path: dist/
 
+  # Deploy job (example: GitHub Pages)
   deploy:
     needs: build
     runs-on: ubuntu-latest
